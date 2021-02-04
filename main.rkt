@@ -1,24 +1,5 @@
 #lang racket
 
-(module+ main
-  (require racket/cmdline)
+(require 2htdp/image)
 
-  (define who (make-parameter "world"))
-  (command-line
-    #:program "picture-viewer"
-    #:once-each
-    [("-n" "--name") name "Who to say hello to" (who name)]
-    #:args ()
-    (printf "hello ~a~n" (who))))
-
-(module+ test
-  (require rackunit)
-
-  (define expected 1)
-  (define actual 1)
-
-  (test-case
-    "Example Test"
-    (check-equal? actual expected ))
-
-  (test-equal? "Shortcut Equal Test" actual expected))
+(bitmap/file (build-path (current-directory) "test.jpg"))
