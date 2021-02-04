@@ -11,7 +11,7 @@
    #:args ([dir #f])
    (define image-list
      (map (λ (p)
-            (bitmap/file p))
+            (scale 0.4 (bitmap/file p)))
           (find-files
            (λ (p) (path-has-extension? p #".jpg"))
            dir)))
