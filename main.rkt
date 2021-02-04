@@ -8,12 +8,13 @@
 
   (command-line
    #:program "picture-viewer"
-   #:args ()
+   #:args ([dir #f])
    (define image-list
      (map (λ (p)
-            (bitmap/file (build-path (current-directory) p)))
+            (bitmap/file p))
           (find-files
-           (λ (p) (path-has-extension? p #".jpg")))))
+           (λ (p) (path-has-extension? p #".jpg"))
+           dir)))
    (define (change w a-key)
      (cond
        [(key=? a-key "left")
